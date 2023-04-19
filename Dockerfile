@@ -1,2 +1,4 @@
-FROM alpine:3.16 always we should skip lates tag for better security
+FROM alpine:3.16
+RUN adduser -D moresand
+USER moresand
 CMD echo "Hello, World!"
