@@ -1,0 +1,24 @@
+version: '3'
+services:
+  web:
+    depends_on:
+      - helloworld
+    build:
+      context: web
+    ports:
+      - "80:80"
+  helloworld:
+    build:
+      context: app
+    depends_on:
+      -  db
+  db:
+    build: 
+      context: db
+    environment:
+      MYSQL_DATABASE: moresand_db
+      MYSQL_ROOT_PASSWORD: admin@123 #this is not a secure way. secret should be kept securely.
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./db/data:/var/lib/mysql
